@@ -14,7 +14,7 @@ Clone the [WDInstagram api](https://github.com/ga-wdi-exercises/wdinstagram_rail
 
 ```shell
 $ bundle install
-$ rails db:create
+$ rails db:creates
 $ rails db:migrate
 $ rails db:seed
 $ rails s

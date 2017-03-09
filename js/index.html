@@ -1,0 +1,5 @@
+<div ng-repeat="dat in vm.data">
+  <p>{{dat.author}}</p>
+  <p><a data-ui-sref="wdinstagramShow({id: $index})">click to show</a></p>
+  <p><a data-ui-sref="wdinstagramUpdate({id: $index})">click here to edit</a></p>
+</div>
