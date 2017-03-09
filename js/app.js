@@ -16,9 +16,9 @@ let wdinstagramData = [
 angular
 .module("wdinstagramApp", ["ui.router"])
 .config(["$stateProvider", RouterFunction])
-.factory( "wdinstagramFactory", [
-      wdinstagramFactoryFunction
-    ]);
+// .factory( "wdinstagramFactory", [
+//       wdinstagramFactoryFunction
+//     ]);
 .controller("wdinstagramIndexController", ["$stateParams", wdinstagramIndexControllerFunction])
 .controller("wdinstagramShowController", ["$stateParams", wdinstagramShowControllerFunction])
 .controller("wdinstagramCreateController", ["$stateParams", wdinstagramCreateControllerFunction])
