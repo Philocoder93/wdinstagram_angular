@@ -14,12 +14,13 @@ let wdinstagramData = [
 
 
 angular
-.module("wdinstagramApp", ["ui.router"])
+.module("wdinstagramApp", ["ui.router", "ngResource"])
 .config(["$stateProvider", RouterFunction])
-// .factory( "wdinstagramFactory", [
-//       wdinstagramFactoryFunction
-//     ]);
-.controller("wdinstagramIndexController", ["$stateParams", wdinstagramIndexControllerFunction])
+.factory( "wdinstagramFactory", [
+      "$resource",
+      wdinstagramFactoryFunction
+    ])
+.controller("wdinstagramIndexController", ["$stateParams", "wdinstagramFactory", wdinstagramIndexControllerFunction])
 .controller("wdinstagramShowController", ["$stateParams", wdinstagramShowControllerFunction])
 .controller("wdinstagramCreateController", ["$stateParams", wdinstagramCreateControllerFunction])
 .controller("wdinstagramUpdateController", ["$stateParams", wdinstagramUpdateControllerFunction])
@@ -53,8 +54,8 @@ function RouterFunction($stateProvider){
 
 }
 
-function wdinstagramIndexControllerFunction ($stateParams) {
-  this.data = wdinstagramData
+function wdinstagramIndexControllerFunction ($stateParams,$resource, wdinstagramFactory) {
+  this.data = wdinstagramFactory.query();
 }
 function wdinstagramShowControllerFunction ($stateParams) {
   this.datum = wdinstagramData[$stateParams.id]
@@ -71,3 +72,6 @@ function wdinstagramUpdateControllerFunction ($stateParams) {
   this.datum = wdinstagramData[$stateParams.id]
 
 }
+function wdinstagramFactoryFunction($resource){
+    return $resource( "http://localhost:3000/entries" );
+  }
